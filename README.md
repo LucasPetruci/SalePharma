@@ -2,3 +2,4 @@
 
 
 # SalePharma
+A SalePharma é um site onde os clientes podem realizar o pedido por um preço acessível de qualquer lugar, facilitando a vida das pessoas, o pedido é entregue no endereço sem a necessidade de sair de casa.
