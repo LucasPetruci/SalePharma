@@ -6,7 +6,7 @@
 | Data | Versão | Descrição | Autor |
 |:----:|:------:|:---------:|:---------:|
 | 07/12/2022 | 0.1 | Criação do Documento | [Lucas Sales](https://github.com/LucasPetruci) |
-| 08/12/2022 | 0.2 | Adição do Diagrama de classe | [Lucas Sales](https://github.com/LucasPetruci) |
+| 08/12/2022 | 0.2 | Adição do Mini-mundo e Diagrama de classe | [Lucas Sales](https://github.com/LucasPetruci) |
 
 ## mini-mundo
 Requisitos 
