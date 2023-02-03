@@ -1,0 +1,63 @@
+package br.edu.iff.ccc.bsi.webdev;
+
+import java.sql.Time;
+import java.util.Date;
+
+public class Funcionario {
+
+	private int id;
+	private Date dataCadastro;
+	private String nome;
+	private Time horaTrabalho;
+	
+	public Funcionario(int id, Date dataCadastro, String nome, Time horaTrabalho){
+		this.id = id;
+		this.dataCadastro = dataCadastro;
+		this.nome = nome;
+		this.horaTrabalho = horaTrabalho;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public Time getHoraTrabalho() {
+		return horaTrabalho;
+	}
+	
+	public void setHoraTrabalho(Time horaTrabalho) {
+		this.horaTrabalho = horaTrabalho;
+	}
+	
+	public void adicionarProduto() {
+		
+	}
+	
+	public void recebeVenda() {
+		
+	}
+	
+	public void encerrarVenda() {
+		
+	}
+}
