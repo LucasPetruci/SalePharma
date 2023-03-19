@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layoutBase :: head}">
+
+</head>
+
+<body class="lista">
+
+	<h1>Lista de Entregadores</h1>
+	<div class="teste">
+		<table >
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+			</tr>
+			<tr th:each="entregador : ${entregadores}">
+				<td th:text="${entregador.id}"></td>
+				<td th:text="${entregador.nome}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+
+<style>
+	.lista {
+		position: relative;
+		text-align: center;
+
+	}
+	.teste{
+		
+		margin-left: 40%;
+		
+	}
+	
+</style>
+
+<footer th:replace="~{layoutBase :: footer}"></footer>
+
+</html>
