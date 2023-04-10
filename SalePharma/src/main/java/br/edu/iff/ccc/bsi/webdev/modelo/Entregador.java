@@ -17,7 +17,7 @@ public class Entregador implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	
@@ -43,5 +43,11 @@ public class Entregador implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
 	
 }
