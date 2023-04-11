@@ -1,7 +1,6 @@
 package br.edu.iff.ccc.bsi.webdev.controller.apirest;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,58 +16,41 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.iff.ccc.bsi.webdev.modelo.Cliente;
-import br.edu.iff.ccc.bsi.webdev.repository.ClienteRepository;
+import br.edu.iff.ccc.bsi.webdev.service.ClienteService;
 
 @RestController
 @RequestMapping("/apirest/cliente")
 public class ClienteController {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteService clienteService;
 
     @GetMapping("/clientes")
-    public List<Cliente> listar() {
-        return clienteRepository.findAll();
+    public List<Cliente> listarClientes() {
+        return clienteService.listarTodos();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> getById(@PathVariable Long id) {
-        Optional<Cliente> cliente = clienteRepository.findById(id);
-        if (cliente.isPresent()) {
-            return ResponseEntity.ok(cliente.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        Cliente cliente = clienteService.buscarPorId(id);
+        return ResponseEntity.ok(cliente);
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente criar(@RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
+        return clienteService.salvar(cliente);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente novoCliente) {
-        Optional<Cliente> optionalCliente = clienteRepository.findById(id);
-        if (optionalCliente.isPresent()) {
-            Cliente cliente = optionalCliente.get();
-            cliente.setNome(novoCliente.getNome());
-            cliente.setCpf(novoCliente.getCpf());
-            clienteRepository.save(cliente);
-            return ResponseEntity.ok(cliente);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        Cliente clienteAtualizado = clienteService.atualizar(id, novoCliente);
+        return ResponseEntity.ok(clienteAtualizado);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable Long id) {
-        Optional<Cliente> optionalCliente = clienteRepository.findById(id);
-        if (optionalCliente.isPresent()) {
-            clienteRepository.delete(optionalCliente.get());
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        clienteService.remover(id);
+        return ResponseEntity.noContent().build();
     }
 }

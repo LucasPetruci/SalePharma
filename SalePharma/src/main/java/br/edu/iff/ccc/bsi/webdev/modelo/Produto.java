@@ -21,12 +21,13 @@ public class Produto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id; 
-	
+
 	private int quantidade;
-	private String foto, nomeFabricante, principioAtivo, observacao;
+	private String foto, nomeFabricante, principioAtivo, observacao, nome;
 	
 	@Column(length = 200)
 	private String descricao;
+	
 	private float preco;
 	
 //	@ManyToOne
@@ -43,6 +44,14 @@ public class Produto implements Serializable{
 		this.preco = preco;
 	}
 	
+	public Produto(String nome2, Double preco2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Produto() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -105,6 +114,14 @@ public class Produto implements Serializable{
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	
 	public void especificacao() {
 		System.out.println("");
@@ -117,5 +134,7 @@ public class Produto implements Serializable{
 	public void baixaEstoque() {
 		this.quantidade--;
 	}
+
+	
 	
 }
