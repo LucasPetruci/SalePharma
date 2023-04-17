@@ -2,12 +2,18 @@ package br.edu.iff.ccc.bsi.webdev.modelo;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
+
 
 
 @Entity
@@ -21,9 +27,12 @@ public class Cliente implements Serializable {
 	private Long id;
 	
 	@Column(name = "NOME", nullable = false)
+	@NotBlank(message = "Não pode ser vazio")
 	private String nome;
 	
-	@Column(name = "CPF", nullable = false)
+	@Column(name = "CPF", nullable = false, unique = true)
+    @NotEmpty(message = "O CPF não pode ser vazio")
+	@CPF
 	private String cpf;
 	
 	public Cliente() {

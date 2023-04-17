@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Entregador")
@@ -22,6 +23,7 @@ public class Entregador implements Serializable {
 	
 	
 	@Column(name = "NOME", nullable = false)
+	@NotBlank(message = "Não pode ser vazio")
 	private String nome;
 	
 	public Entregador() {
