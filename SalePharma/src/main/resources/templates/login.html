@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head th:replace="~{layoutBase :: head}">
+    <title>Login</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <main class="flex-grow-1">
+        <div class="container py-5">
+            <h1 class="mb-5">Login</h1>
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Usuário</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer th:replace="~{layoutBase :: footer}"></footer>
+</body>
+</html>
