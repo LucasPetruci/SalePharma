@@ -2,17 +2,20 @@ package br.edu.iff.ccc.bsi.webdev.modelo;
 
 import java.io.Serializable;
 
+import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "Produto")
 public class Produto implements Serializable{
 
 	
@@ -21,33 +24,31 @@ public class Produto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id; 
+	
+	@NotBlank(message = "Não pode ser vazio")
+	private String nome;
 
+	@NotNull
 	private int quantidade;
-	private String foto, nomeFabricante, principioAtivo, observacao, nome;
+	
 	
 	@Column(length = 200)
+	@Size(min = 10, max = 200, message = "A descrição deve estar em 10 e 200 caracter")
 	private String descricao;
 	
+	
+	@DecimalMin(value = "0.01")
 	private float preco;
 	
 //	@ManyToOne
 //	private Pedido pedido;
 	
-	public Produto(int id, int quantidade, String descricao, String foto, String nomeFabricate, String principioAtivo, String observacao, float preco) {
-		this.id = id;
+	public Produto(int quantidade, float preco, String descricao) {
 		this.quantidade = quantidade;
-		this.descricao = descricao;
-		this.foto = foto;
-		this.nomeFabricante = nomeFabricate;
-		this.principioAtivo = principioAtivo;
-		this.observacao = observacao;
 		this.preco = preco;
+		this.descricao = descricao;
 	}
 	
-	public Produto(String nome2, Double preco2) {
-		// TODO Auto-generated constructor stub
-	}
-
 	public Produto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -76,36 +77,6 @@ public class Produto implements Serializable{
 		this.descricao = descricao;
 	}
 	
-	public String getFoto() {
-		return foto;
-	}
-	
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-	
-	public String getNomeFabricante() {
-		return nomeFabricante;
-	}
-	
-	public void setNomeFabricante(String nomeFabricante) {
-		this.nomeFabricante = nomeFabricante;
-	}
-	
-	public String getPrincipioAtivo() {
-		return principioAtivo;
-	}
-	
-	public void setPrincipioAtivo(String principioAtivo) {
-		this.principioAtivo = principioAtivo;
-	}
-	
-	public String getObservacao() {
-		return observacao;
-	}
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
 	
 	public float getPreco() {
 		return preco;
@@ -122,19 +93,8 @@ public class Produto implements Serializable{
 		this.nome = nome;
 	}
 
-	
-	public void especificacao() {
-		System.out.println("");
-	}
-	
-	public void reservarItem() {
-		
-	}
-	
-	public void baixaEstoque() {
-		this.quantidade--;
+	public void baixaEstoque(int quantidade) {
+	    this.quantidade -= quantidade;
 	}
 
-	
-	
 }
