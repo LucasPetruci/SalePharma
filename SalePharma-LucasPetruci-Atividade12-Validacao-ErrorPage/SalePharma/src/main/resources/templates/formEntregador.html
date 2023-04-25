@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head th:replace="~{layoutBase :: head}">
+	<title>Cadastro Entregador</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+	<main class="flex-grow-1">
+		<div class="container py-5">
+			<h1 class="mb-5">Entregador</h1>
+			<form th:object="${entregador}" th:action="@{/entregadores/entregador}"
+				method="post">
+				<div class="mb-3">
+					<label for="id" class="form-label">ID</label>
+					<input type="text" class="form-control" id="id" name="id" th:value="${entregador.id}" readonly>
+				</div>
+				<div class="mb-3">
+					<label for="nome" class="form-label">Nome</label>
+					<input type="text" class="form-control" id="nome" name="nome" th:value="${entregador.nome}"
+						required >
+				</div>
+				<div class="text-end">
+					<div class="text-end d-flex justify-content-between">
+						<a class="btn btn-secondary" th:href="@{/entregadores}">Voltar</a>
+						<button type="submit" class="btn btn-success" value="salvar">Salvar</button>
+					</div>
+
+				</div>
+
+			</form>
+		</div>
+	</main>
+
+	<footer th:replace="~{layoutBase :: footer}"></footer>
+</body>
+
+</html>

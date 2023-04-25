@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head th:replace="~{layoutBase :: head}">
+    <title>Clientes</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <main class="flex-grow-1">
+        <div class="container py-5">
+            <h1 class="mb-5">Lista de Clientes</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cliente : ${clientes}">
+                            <td th:text="${cliente.id}"></td>
+                            <td th:text="${cliente.nome}"></td>
+                            <td th:text="${cliente.cpf}"></td>
+                            <td>
+                                <a th:href="@{/clientes/cliente/editar(id=${cliente.id})}"
+                                    class="btn btn-sm btn-warning me-2">
+                                    Editar
+                                </a>
+                                <a th:href="@{/clientes/cliente/excluir(id=${cliente.id})}"
+                                    class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Deseja realmente excluir o cliente?')">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-end">
+                <a th:href="@{/clientes/cliente}" class="btn btn-primary">Novo Cliente</a>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="~{layoutBase :: footer}"></footer>
+</body>
+
+</html>
