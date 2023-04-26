@@ -29,8 +29,12 @@ public class ProdutoService {
     }
 
     public Produto salvar(Produto produto) {
+        if (produto == null) {
+            throw new IllegalArgumentException("Produto não pode ser nulo.");
+        }
         return produtoRepository.save(produto);
     }
+
 
     public void remover(Long id) {
         Optional<Produto> optionalProduto = produtoRepository.findById(id);
@@ -47,10 +51,6 @@ public class ProdutoService {
             Produto produto = optionalProduto.get();
             produto.setNome(novoProduto.getNome());
             produto.setQuantidade(novoProduto.getQuantidade());
-            produto.setFoto(novoProduto.getFoto());
-            produto.setNomeFabricante(novoProduto.getNomeFabricante());
-            produto.setPrincipioAtivo(novoProduto.getPrincipioAtivo());
-            produto.setObservacao(novoProduto.getObservacao());
             produto.setDescricao(novoProduto.getDescricao());
             produto.setPreco(novoProduto.getPreco());
             return produtoRepository.save(produto);
