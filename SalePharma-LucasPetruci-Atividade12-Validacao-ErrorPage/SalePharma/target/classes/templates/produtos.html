@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head th:replace="~{layoutBase :: head}">
+    <title>Produtos</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <main class="flex-grow-1">
+        <div class="container py-5">
+            <h1 class="mb-5">Lista de Produtos</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="produto : ${produtos}">
+                            <td th:text="${produto.id}"></td>
+                            <td th:text="${produto.nome}"></td>
+                            <td th:text="${produto.preco}"></td>
+                            <td th:text="${produto.quantidade}"></td>
+                            
+                            <td th:text="${produto.descricao}"></td>
+                            <td>
+                                <a th:href="@{/produtos/produto/editar(id=${produto.id})}"
+                                    class="btn btn-sm btn-warning me-2">
+                                    Editar
+                                </a>
+                                <a th:href="@{/produtos/produto/excluir(id=${produto.id})}"
+                                    class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Deseja realmente excluir o produto?')">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-end">
+                <a th:href="@{/produtos/produto}" class="btn btn-primary">Novo Produto</a>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="~{layoutBase :: footer}"></footer>
+</body>
+
+</html>

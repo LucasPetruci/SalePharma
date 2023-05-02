@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head th:replace="~{layoutBase :: head}">
+	<title>Sale Pharma - Sua farmácia de confiança</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+	<main class="flex-grow-1">
+		<div class="container">
+			<div class="row justify-content-center mt-5">
+				<div class="col-md-8 text-center">
+					<h1>Bem-vindo à Sale Pharma</h1>
+					<p class="lead">Sua farmácia de confiança para cuidar da sua saúde e bem-estar</p>
+					<a href="/produtos" class="btn btn-primary btn-lg mt-3">Confira nossos produtos</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer th:replace="~{layoutBase :: footer}"></footer>
+</body>
+
+</html>

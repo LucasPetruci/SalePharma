@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head th:replace="~{layoutBase :: head}">
+	<title>Página de erro</title>
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="text-center">Algo deu errado</h1>
+		<table>
+			<tr>
+				<td class="text-end">Date:</td>
+				<td th:text="${timestamp}"></td>
+			</tr>
+			<tr>
+				<td class="text-end">Path:</td>
+				<td th:text="${path}"></td>
+			</tr>
+			<tr>
+				<td class="text-end">Error:</td>
+				<td th:text="${error}"></td>
+			</tr>
+			<tr>
+				<td class="text-end">Status:</td>
+				<td th:text="${status}"></td>
+			</tr>
+		</table>
+
+
+	</div>
+	<br>
+	<a href="/" class="btn btn-primary">Voltar à página inicial</a>
+</body>
+<footer th:replace="~{layoutBase :: footer}"></footer>
+
+</html>
